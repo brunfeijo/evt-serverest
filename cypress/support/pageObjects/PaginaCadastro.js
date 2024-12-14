@@ -1,5 +1,3 @@
-
-
 class PaginaCadastro {
   static visitarCadastro() {
     cy.visit(Cypress.env('baseURL') + '/cadastrarusuarios')
@@ -61,37 +59,35 @@ class PaginaCadastro {
   }
 
   static validaMenuAcimaAdmin() {
-
-    cy.get('.imagem').should('exist') 
-    cy.get('[data-testid="home"]').should('exist').and('contain.text', 'Home') 
-    cy.get('[data-testid="cadastrar-usuarios"]').should('exist').and('contain.text', 'Cadastrar Usuários') 
-    cy.get('[data-testid="listar-usuarios"]').should('exist').and('contain.text', 'Listar Usuários') 
-    cy.get('[data-testid="cadastrar-produtos"]').should('exist').and('contain.text', 'Cadastrar Produtos') 
-    cy.get('[data-testid="listar-produtos"]').should('exist').and('contain.text', 'Listar Produtos') 
-    cy.get('[data-testid="link-relatorios"]').should('exist').and('contain.text', 'Relatórios') 
+    cy.get('.imagem').should('exist')
+    cy.get('[data-testid="home"]').should('exist').and('contain.text', 'Home')
+    cy.get('[data-testid="cadastrar-usuarios"]').should('exist').and('contain.text', 'Cadastrar Usuários')
+    cy.get('[data-testid="listar-usuarios"]').should('exist').and('contain.text', 'Listar Usuários')
+    cy.get('[data-testid="cadastrar-produtos"]').should('exist').and('contain.text', 'Cadastrar Produtos')
+    cy.get('[data-testid="listar-produtos"]').should('exist').and('contain.text', 'Listar Produtos')
+    cy.get('[data-testid="link-relatorios"]').should('exist').and('contain.text', 'Relatórios')
     cy.get('[data-testid="logout"]').should('exist').and('contain.text', 'Logout')
-
-    }
+  }
 
   static validacaoUrlAdmin() {
-      cy.url().should('include', 'admin/home')
-    }
+    cy.url().should('include', 'admin/home')
+  }
 
   static cadastroInvalido() {
-      cy.get('[data-testid="cadastrar"]').click()
-    }
+    cy.get('[data-testid="cadastrar"]').click()
+  }
 
   static validaErroNome() {
-      cy.get('.form > :nth-child(3)').should('be.visible').and('contain.text', '×Nome é obrigatório')
-    }
+    cy.get('.form > :nth-child(3)').should('be.visible').and('contain.text', '×Nome é obrigatório')
+  }
 
   static validaErroEmail() {
-      cy.get('.form > :nth-child(4)').should('be.visible').and('contain.text', '×Email é obrigatório')
-    }
+    cy.get('.form > :nth-child(4)').should('be.visible').and('contain.text', '×Email é obrigatório')
+  }
 
   static validaErroSenha() {
-      cy.get('.form > :nth-child(5)').should('be.visible').and('contain.text', '×Password é obrigatório')
-    }
+    cy.get('.form > :nth-child(5)').should('be.visible').and('contain.text', '×Password é obrigatório')
+  }
 }
 
 export default PaginaCadastro

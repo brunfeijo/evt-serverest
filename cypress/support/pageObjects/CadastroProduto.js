@@ -29,7 +29,7 @@ class CadastroProduto {
   }
 
   static visitarListarProdutos() {
-    cy.listaDeProdutos()
+    cy.visit(Cypress.env('baseURL') + '/admin/listarprodutos')
   }
 
   static excluirProduto(nomeProduto) {
@@ -41,9 +41,22 @@ class CadastroProduto {
     cy.get('table').contains('td', nomeProduto).should('not.exist') // Valida que a linha do produto foi excluída
   }
 
-  static verificarMensagemErro(mensagem) { 
-    cy.get('.alert').should('be.visible').and('contain.text', "Já existe produto com esse nome") }
-  
+  static verificarMensagemErro(mensagem) {
+    cy.get('.alert').should('be.visible').and('contain.text', mensagem)
+  }
+
+  static pesquisarProduto(nomeProduto) {
+    cy.get('[data-testid="search"]').type(nomeProduto)
+    cy.get('[data-testid="search-button"]').click()
+  }
+
+  static validarProdutoNaTabela(produto) {
+    cy.get('table').contains('td', produto.nome).should('exist').click()
+    cy.get('[data-testid="product-name"]').should('contain.text', produto.nome)
+    cy.get('[data-testid="product-preco"]').should('contain.text', produto.preco)
+    cy.get('[data-testid="product-descricao"]').should('contain.text', produto.descricao)
+    cy.get('[data-testid="product-quantidade"]').should('contain.text', produto.quantidade)
+  }
 }
 
 export default CadastroProduto

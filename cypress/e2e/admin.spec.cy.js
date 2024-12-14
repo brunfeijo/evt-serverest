@@ -26,7 +26,7 @@ describe('Validação de cadastro como admin', () => {
     PaginaCadastro.validaBotaoEntrarCadastro()
   })
 
-  it.only('Valida elementos após cadastro e reloga como admin', () => {
+  it('Valida elementos após cadastro e reloga como admin', () => {
     PaginaCadastro.realizarCadastro(nome, email, password)
     PaginaCadastro.validaMensagemSucesso()
     PaginaCadastro.validaTituloPagina(nome)

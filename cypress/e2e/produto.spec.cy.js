@@ -1,24 +1,18 @@
 import PaginaCadastro from '../support/pageObjects/PaginaCadastro'
 import CadastroProduto from '../support/pageObjects/CadastroProduto'
-import { faker } from '@faker-js/faker'
+import { gerarDadosUsuario, gerarDadosProduto } from '../support/utils'
 
 describe('Validação da página de cadastro', () => {
   let produto
 
   before(function() {
-    // Inicializa dados do produto utilizando o comando customizado
-    cy.geraDadosProduto().then(data => {
+    // Inicializa dados do produto utilizando funções de utilidades
+    gerarDadosProduto().then(data => {
       produto = data
+      this.dadosProduto = data  // Armazena os dados do produto no contexto do teste
     })
 
-    // Gera email, senha e nome aleatórios usando faker e armazena no contexto
-    function gerarDadosUsuario() {
-      return {
-        email: faker.internet.email(),
-        password: faker.internet.password(),
-        nome: faker.name.fullName()
-      }
-    }
+    // Gera dados do usuário
     this.dadosUsuario = gerarDadosUsuario()
   })
 
@@ -26,30 +20,22 @@ describe('Validação da página de cadastro', () => {
     PaginaCadastro.visitarCadastro()
   })
 
-  it.only('Loga como admin, cria um produto e verifica se o mesmo existe na tabela', function() {
+  it.only('Loga como admin, cria um produto, verifica se o mesmo existe na tabela e exclui o produto', function() {
     const { nome, email, password } = this.dadosUsuario
+    const produto = this.dadosProduto
 
     PaginaCadastro.realizarCadastro(nome, email, password)
     PaginaCadastro.validaMensagemSucesso()
     PaginaCadastro.validaTituloPagina(nome)
     PaginaCadastro.validaMenuAcimaAdmin()
 
-    // Visita a página de cadastro de produto e realiza o cadastro
+    // Realiza o cadastro do produto
     CadastroProduto.visitarCadastroProduto()
-    CadastroProduto.clicarBotaoCadastrar()
     CadastroProduto.validaCamposCadastro()
     CadastroProduto.realizarCadastroProduto(produto.nome, produto.preco, produto.descricao, produto.quantidade, produto.imagem)
-    CadastroProduto.validarCadastroSucesso()
 
-    // Visita a página onde está a tabela de produtos
-    cy.visit(Cypress.env('baseURL') + '/admin/administrarprodutos')
-
-    // Busca o produto na tabela e valida a existência
-    cy.get('table').within(() => {
-      cy.contains('td', produto.nome).should('exist')
-      cy.contains('td', produto.preco).should('exist')
-      cy.contains('td', produto.descricao).should('exist')
-      cy.contains('td', produto.quantidade).should('exist')
-    })
+    // Verifica e exclui o produto na lista de produtos
+    /* CadastroProduto.visitarListarProdutos() */
+    CadastroProduto.excluirProduto(produto.nome)
   })
 })

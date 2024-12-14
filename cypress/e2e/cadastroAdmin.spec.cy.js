@@ -1,7 +1,7 @@
 import PaginaCadastro from '../support/pageObjects/PaginaCadastro'
 import { faker } from '@faker-js/faker'
 
-describe('Validação da página de cadastro', () => {
+describe('Validação de cadastro como admin', () => {
   let email
   let password
   let nome
@@ -17,7 +17,7 @@ describe('Validação da página de cadastro', () => {
     PaginaCadastro.visitarCadastro()
   })
 
-  it('Deve validar todos os campos de cadastro', () => {
+  it('Valida todos os campos da tela de cadastro', () => {
     PaginaCadastro.validaImagemCadastro()
     PaginaCadastro.validaTituloCadastro()
     PaginaCadastro.validaCamposCadastro()
@@ -26,17 +26,18 @@ describe('Validação da página de cadastro', () => {
     PaginaCadastro.validaBotaoEntrarCadastro()
   })
 
-  it('Deve realizar cadastro e validar elementos após cadastro', () => {
+  it.only('Valida elementos após cadastro e reloga como admin', () => {
     PaginaCadastro.realizarCadastro(nome, email, password)
     PaginaCadastro.validaMensagemSucesso()
     PaginaCadastro.validaTituloPagina(nome)
-    PaginaCadastro.validaBodysComBotoes()
+    PaginaCadastro.validaMenuAcimaAdmin();
+    PaginaCadastro.validaoOpcoesMenuAdmin()
     PaginaCadastro.validacaoUrlAdmin()
+    PaginaCadastro.validaMenuAcimaAdmin()
   })
 
 
-
-  it.only('Deve exibir erros ao tentar cadastro com dados inválidos', () => {
+  it('Validação de erros ao tentar cadastro com dados inválidos', () => {
     PaginaCadastro.cadastroInvalido();
     PaginaCadastro.validaErroNome()
     PaginaCadastro.validaErroEmail()

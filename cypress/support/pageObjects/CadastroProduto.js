@@ -40,6 +40,10 @@ class CadastroProduto {
       })
     cy.get('table').contains('td', nomeProduto).should('not.exist') // Valida que a linha do produto foi excluída
   }
+
+  static verificarMensagemErro(mensagem) { 
+    cy.get('.alert').should('be.visible').and('contain.text', "Já existe produto com esse nome") }
+  
 }
 
 export default CadastroProduto

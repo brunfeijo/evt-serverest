@@ -10,7 +10,7 @@ class TelaInicial {
     }
   
     static validarImagem() {
-      cy.get('img').should('be.visible') // Ajuste o seletor conforme necessário para a imagem específica
+      cy.get('img').should('be.visible')
     }
   
     static validarBotaoEntrar() {

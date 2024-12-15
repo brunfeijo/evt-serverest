@@ -4,11 +4,6 @@
 Antes de rodar os testes, você precisa ter o seguinte instalado:
 
 1. **Node.js**: [Baixe a versão LTS](https://nodejs.org/).
-2. **Gerenciador de pacotes**: Pode ser o `npm` (vem com o Node.js) ou `yarn`.
-3. **Instalar dependências do projeto**:
-   Execute o comando abaixo para instalar as dependências do projeto:
-
-
 
    npm install
 

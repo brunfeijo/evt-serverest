@@ -1,4 +1,4 @@
-export default class Login_API {
+export default class LoginAPI {
   static realizarLogin(email, senha) {
     return cy.request({
       method: 'POST',

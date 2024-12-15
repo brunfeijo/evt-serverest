@@ -5,7 +5,6 @@
 
 npm install
 
-
 1. Executar Todos os Testes em Modo Interativo
 
 npx cypress open

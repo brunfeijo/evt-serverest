@@ -1,7 +1,4 @@
-
- Pré-requisitos
-
-1. **Node.js**: Certifique-se de ter o [Node.js](https://nodejs.org/) instalado (recomendado: versão LTS mais recente).
+Certifique-se de ter o [Node.js](https://nodejs.org/) instalado (recomendado: versão LTS mais recente).
 
 npm install
 

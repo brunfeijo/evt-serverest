@@ -1,15 +1,17 @@
 modo simples:
 
-utilize o npm
+**utilize o npm**
 
-npm install
+`npm install`
 
 após isso:
 
-interface gráfica:
-npx cypress open
+**interface gráfica:**
 
-interface headless:
-npc cypress run
+`npx cypress open`
+
+**interface headless:**
+
+`npc cypress run`
 
 Obrigado! :D

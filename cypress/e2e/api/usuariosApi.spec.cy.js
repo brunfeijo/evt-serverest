@@ -1,9 +1,10 @@
 import { gerarUsuario } from '../../support/geradorDeDados'; // Caminho atualizado
-import '../../support/commandsAPI';
+import '../../support/commandsAPI'; // Comandos customizados
 
 describe('Testes na API de Usuários', () => {
   let usuario;
 
+  // Gera um usuário dinâmico antes de cada teste
   beforeEach(() => {
     usuario = gerarUsuario(); // Gera um usuário dinâmico
   });
@@ -23,8 +24,6 @@ describe('Testes na API de Usuários', () => {
       expect(response.body._id).to.exist; // Garante que um ID de usuário seja retornado
     });
   });
-
-
 
   it('Deve buscar um usuário por ID com sucesso', () => {
     cy.criarUsuario(usuario).its('body._id').then((userId) => {
@@ -57,9 +56,6 @@ describe('Testes na API de Usuários', () => {
         expect(resp.status).to.eq(200); // Valida exclusão bem-sucedida
         expect(resp.body.message).to.include('Registro excluído com sucesso');
       });
-
-  });
-
-
+    });
   });
 });

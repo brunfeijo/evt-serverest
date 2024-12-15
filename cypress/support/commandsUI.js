@@ -16,10 +16,5 @@ Cypress.Commands.add('geraDadosProduto', () => {
     imagem: 'cute.jpg'  // Caminho relativo dentro da pasta fixtures
   }
 
-  Cypress.Commands.add('loginUI', (email, senha) => {
-    cy.visit('/login'); // Caminho relativo com baseUrl para o front-end
-    cy.get('#email').type(email);
-    cy.get('#password').type(senha);
-    cy.get('#submit').click();
-  });
+
 })

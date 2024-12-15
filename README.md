@@ -1,5 +1,5 @@
 
-## 🛠️ Pré-requisitos
+ Pré-requisitos
 
 1. **Node.js**: Certifique-se de ter o [Node.js](https://nodejs.org/) instalado (recomendado: versão LTS mais recente).
 
@@ -14,6 +14,3 @@ npx cypress open
 
 npx cypress run
 
-3. Executar Testes de um Arquivo Específico
-
-npx cypress run --spec cypress/e2e/produtos.spec.js

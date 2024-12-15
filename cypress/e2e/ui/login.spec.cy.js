@@ -1,5 +1,7 @@
-import PaginaLogin from '../../support/pageObjects/PaginaLogin';
+import PaginaLogin from '../../support/pageObjects_ui/PaginaLogin';
 import { faker } from '@faker-js/faker';
+import '../../support/commandsUI';
+
 
 describe('Validação da página de login', () => {
   let email;

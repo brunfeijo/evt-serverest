@@ -1,6 +1,8 @@
 import PaginaCadastro from '../../support/pageObjects_ui/PaginaCadastro';
 import CadastroProduto from '../../support/pageObjects_ui/CadastroProduto';
 import { gerarDadosUsuario, gerarDadosProduto } from '../../support/utils';
+import '../../support/commandsUI';
+
 
 describe('Validação da página de cadastro', () => {
   let dadosUsuario; // Variável para armazenar dados do usuário

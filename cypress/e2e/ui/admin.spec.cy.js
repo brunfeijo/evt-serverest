@@ -1,4 +1,4 @@
-import PaginaCadastro from '../support/pageObjects/PaginaCadastro'
+import PaginaCadastro from '../../support/pageObjects_ui/PaginaCadastro'
 import { faker } from '@faker-js/faker'
 
 describe('Validação de cadastro como admin', () => {

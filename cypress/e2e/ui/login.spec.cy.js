@@ -1,4 +1,4 @@
-import PaginaLogin from '../support/pageObjects/PaginaLogin';
+import PaginaLogin from '../../support/pageObjects/PaginaLogin';
 import { faker } from '@faker-js/faker';
 
 describe('Validação da página de login', () => {
@@ -50,4 +50,5 @@ describe('Validação da página de login', () => {
     PaginaLogin.validaUrlCadastro();
     PaginaLogin.validaTituloPaginaUser();
   });
+  
 });
